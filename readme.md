@@ -12,7 +12,7 @@ composer install
 php artisan migrate
 ```
 
-##Database setup
+## Database setup
 
 Create database with name ```eapi``` and configure as,
 
