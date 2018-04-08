@@ -17,6 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => ['api','cors']], function () {
+    Route::post('auth/register', 'Auth\ApiRegisterController@create');
+});
+
+
+Route::group(['middleware' => ['inject-secret']], function () {
+    Route::post('/v1/login', 'AuthController@issueToken');
+});
+
 Route::apiResource('/products', 'ProductController');
 
 Route::group(['prefix'=>'products'], function() {
